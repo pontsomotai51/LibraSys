@@ -48,7 +48,7 @@ The system helps libraries manage books, registered members, borrowing transacti
 - Password hashing.
 - JWT authentication.
 - Automatic stock updates when books are borrowed or returned.
-- Database integration using MySQL.
+- MySQL database integration.
 
 ## 4. Project Structure
 
@@ -70,12 +70,16 @@ LibrarySystem/
 │
 ├── backend/
 │   ├── middleware/
+│   │   └── auth.js
 │   ├── routes/
+│   │   ├── books.js
+│   │   ├── transactions.js
+│   │   └── users.js
 │   ├── db.js
 │   ├── server.js
-│   ├── .env
 │   └── package.json
 │
+├── .gitignore
 └── README.md
 ```
 
@@ -83,9 +87,7 @@ LibrarySystem/
 
 The application uses MySQL.
 
-Database name:
-
-`librasys`
+**Database name:** `librasys`
 
 The database contains three main tables:
 
@@ -93,7 +95,7 @@ The database contains three main tables:
 - `users` – Stores administrator and member accounts.
 - `transactions` – Stores borrowing and returning records.
 
-Configure the database connection in the backend `.env` file using your own local credentials.
+Create a local `.env` file inside the backend folder and configure it with your own database credentials.
 
 Required environment variables:
 
@@ -105,12 +107,11 @@ DB_NAME=librasys
 JWT_SECRET=your_secret_key
 ```
 
-Do not upload your `.env` file or database passwords to GitHub.
+**Important:** Do not upload your `.env` file or database passwords to GitHub.
 
 ## 6. Installation and Setup
 
 ### Requirements
-
 - Node.js and npm
 - MySQL Server
 - Visual Studio Code
@@ -118,24 +119,28 @@ Do not upload your `.env` file or database passwords to GitHub.
 
 ### Step 1: Install Backend Dependencies
 
-Open a terminal in the backend folder:
-
 ```bash
 cd backend
 npm install
 ```
 
-### Step 2: Start the Backend Server
+### Step 2: Configure the Database
+
+Create the `librasys` database and its required tables in MySQL.
+
+Create and configure your backend `.env` file.
+
+### Step 3: Start the Backend Server
 
 ```bash
 node server.js
 ```
 
-The backend runs at:
+Backend address:
 
 `http://localhost:5000`
 
-### Step 3: Install Frontend Dependencies
+### Step 4: Install Frontend Dependencies
 
 Open another terminal:
 
@@ -144,7 +149,7 @@ cd frontend
 npm install
 ```
 
-### Step 4: Start the Frontend
+### Step 5: Start the Frontend
 
 ```bash
 npm run dev
@@ -155,8 +160,6 @@ Open the application in your browser:
 `http://localhost:5173`
 
 ## 7. API Endpoints
-
-The backend provides the following main API routes:
 
 | Method | Endpoint | Purpose |
 |---|---|---|
@@ -187,5 +190,6 @@ Protected endpoints require authentication and appropriate permissions.
 
 LibraSys provides a centralized solution for managing library operations. It demonstrates the use of React, Express.js, REST APIs, MySQL database integration and authentication in web application development.
 
-**Project:** LibraSys – Library Management System  
+**Project:** LibraSys – Library Management System
+
 **Course:** Web Application Development (BIWA2110)
